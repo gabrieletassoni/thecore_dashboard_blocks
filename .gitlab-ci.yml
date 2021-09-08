@@ -1,0 +1,13 @@
+image: ruby:2.7.1
+
+stages:
+    - build
+
+build_gem:
+    when: always
+    stage: build
+    only:
+        - tags
+    script:
+        - gem build *.gemspec
+        - gem push
